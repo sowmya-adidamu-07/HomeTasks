@@ -1,14 +1,15 @@
 //Basic Mathematical Operations
 //https://www.codewars.com/kata/basic-mathematical-operations
-function basicOp(operation, value1, value2) {
-    if (operation === '+')
-        return value1 + value2;
-    else if (operation === '-')
-        return value1 - value2;
-    else if (operation === '*')
-        return value1 * value2;
-    else if (operation === '/')
-        return value1 / value2;
+function basicOp(operation, value1, value2)
+{
+  if(operation === '+')
+      return value1 + value2;
+  else if(operation === '-')
+      return value1 - value2;
+  else if(operation === '*')
+      return value1 * value2;
+  else if(operation === '/')
+      return value1 / value2;
 }
 //Output
 //describe("Tests", () => {
@@ -20,3 +21,4 @@ function basicOp(operation, value1, value2) {
     //     Test.assertSimilar(basicOp('/', 49, 7), 7);
     //       });
     //     });
+        
