@@ -38,7 +38,7 @@ const createUser= (req,res) => {
     }
     else{
         res.statusCode=400;
-        res.send(`Validation error found ${isValid.error.message} `);
+        res.send(`Validation error  ${isValid.error.message} `);
     }
 }
 const updateUser= (req,res) => {
@@ -62,7 +62,7 @@ const updateUser= (req,res) => {
      }
     else{
         res.statusCode=400;
-        res.send(`Validation error found ${isValid.error.message} `);
+        res.send(`Validation error  ${isValid.error.message} `);
     }
     
 }
