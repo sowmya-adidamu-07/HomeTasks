@@ -1,5 +1,5 @@
 const express = require("express");
-const users  = require("./UserDetails/Users").users;
+const users  = require("./userDetails/users").users;
 const JOI = require('joi');
 const router = express.Router();
 const getUserById = (req,res) => {
@@ -13,7 +13,7 @@ const getUserById = (req,res) => {
     } 
     else {
                res.statusCode = 400;
-               res.send({ message: " unable to get  user by id " });
+               res.send({ message: " Unable to get  user by id " });
     }
 };
 const createUser= (req,res) => {
@@ -25,7 +25,7 @@ const createUser= (req,res) => {
         if(reqUserId != -1)
         {
             res.statusCode = 404;
-            res.send({message:'user already exists'});
+            res.send({message:'User already exists'});
             
         }
         else{
@@ -38,7 +38,7 @@ const createUser= (req,res) => {
     }
     else{
         res.statusCode=400;
-        res.send(`validation error found ${isValid.error.message} `);
+        res.send(`Validation error found ${isValid.error.message} `);
     }
 }
 const updateUser= (req,res) => {
@@ -56,13 +56,13 @@ const updateUser= (req,res) => {
         }
         else{
             res.statusCode = 400;
-            res.send({message:'update cannot be done as user does not exist '});
+            res.send({message:'Update cannot be done as user does not exist '});
 
         }
      }
     else{
         res.statusCode=400;
-        res.send(`validation error found ${isValid.error.message} `);
+        res.send(`Validation error found ${isValid.error.message} `);
     }
     
 }
@@ -74,7 +74,7 @@ const removeUser = (req,res)=>{
            userToBeDeleted.isDeleted = true;
            res.statusCode = 200;
           
-           res.send({message:"sucessfully Deleted a User",userToBeDeleted});
+           res.send({message:"Sucessfully Deleted a User",userToBeDeleted});
     }
     else{
            res.statusCode = 400;              
@@ -89,13 +89,13 @@ const getAutoSuggestUsers = (req,res)=>{
         const SortedUsers = users.sort((username1,username2) => username1.login.localeCompare(username2.login));
         const autoSuggestedUsers = (SortedUsers.filter(user => user.login.indexOf(loginSubstring) != -1)).slice(0,limit);
         res.statusCode = 200;
-        res.send({message:"The Suggested Users",Users:autoSuggestedUsers});
+        res.send({message:"The suggested users",Users:autoSuggestedUsers});
        
     }
     else
     {
         res.statusCode = 400;
-        res.send({message:"The Suggested Users",Users: autoSuggestedUsers});
+       
     }
 }
 const forAnyOtherRequest = (req,res)=>{
