@@ -26,6 +26,7 @@ exports.getUsersById = async (req, res) => {
     }
     catch (err) {
         console.log(err.message);
+        throw err;
     }
 }
 
@@ -37,12 +38,13 @@ exports.saveUser = async (req, res) => {
     try {
         let ret = await userService.saveUserInDB(id, login, age, password, isdeleted);
         if (ret == null) {
-            throw Error("Already data is existing with same Id");
+            throw Error("Already data is existing with same id");
         }
         res.send("Data inserted successfully ! !");
     }
     catch (err) {
-        res.send("Already data is existing with same Id");
+        res.send("Already data is existing with same id");
+        throw err;
     }
 }
 
@@ -54,12 +56,12 @@ exports.updateUser = async (req, res) => {
     if (!userToUpdate) {
         res.send('User not found');
     }
-    console.log(id);
     try {
-        const result = await userService.updateUserInDB(id, login, password, age);
-        res.send("updated successfully ! !");
+        await userService.updateUserInDB(id, login, password, age);
+        res.send("Updated successfully ! !");
     } catch (err) {
         res.send(err.message);
+        throw err;
     }
 }
 
@@ -72,7 +74,7 @@ exports.deleteUser = async (req, res) => {
     }
     else {
         try {
-            const count = await userService.deleteUserFromDB(id)
+            await userService.deleteUserFromDB(id)
             res.send("Succesfully deleted ! !");
         }
         catch (err) {

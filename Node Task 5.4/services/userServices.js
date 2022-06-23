@@ -22,6 +22,7 @@ exports.getUsersFromDB = async () => {
   }
   catch (e) {
     console.log(e.message);
+    throw e;
   }
 }
 
@@ -33,6 +34,7 @@ exports.getUserById = async (id) => {
   }
   catch (e) {
     console.log(e.message);
+    throw e;
   }
 }
 
@@ -60,6 +62,7 @@ exports.updateUserInDB = async (id, login, password, age) => {
   }
   catch (e) {
     console.log(e.message);
+    throw e;
   }
 }
 
@@ -71,5 +74,6 @@ exports.deleteUserFromDB = async (id) => {
   }
   catch (e) {
     console.log(e.message);
+    throw e;
   }
 }
